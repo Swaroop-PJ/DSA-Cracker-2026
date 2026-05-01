@@ -1,34 +1,44 @@
 class Solution {
-    int digits(int x){
-       int digits=0;
-        while(x>0){
-            digits++;
-            x/=10;
+    // int digits(int x){
+    //    int digits=0;
+    //     while(x>0){
+    //         digits++;
+    //         x/=10;
 
-        }
-        return digits;
-    }
-    int expo(int a, int b){
-        int result=1;
-        for(int i=1;i<=b;i++){
-            result*=a;
-        }
-        return result;
-    }
-    public boolean isPalindrome(int x) {
-        if(x<0) return false;
-        int digits=digits(x);
-        while(digits>1){
-            int first=x%(10);
-            int last=x/expo(10,digits-1);
-            if(first!=last) return false;
-            x=x/10;
-            digits--;
-            x=x%expo(10,digits-1);
-            digits--;
+    //     }
+    //     return digits;
+    // }
+    // int expo(int a, int b){
+    //     int result=1;
+    //     for(int i=1;i<=b;i++){
+    //         result*=a;
+    //     }
+    //     return result;
+    // }
+     public boolean isPalindrome(int x) {
+    //     if(x<0) return false;
+    //     int digits=digits(x);
+    //     while(digits>1){
+    //         int first=x%(10);
+    //         int last=x/expo(10,digits-1);
+    //         if(first!=last) return false;
+    //         x=x/10;
+    //         digits--;
+    //         x=x%expo(10,digits-1);
+    //         digits--;
 
-        }
-        return true;
-        
+    //     }
+    //     return true;
+    if(x<0) return false;
+    int tmp=x;
+    int rev=0;
+    while(x>0){
+        int rem=x%10;
+        rev=rev*10+rem;
+        x/=10;
     }
+    if(rev==tmp) return true;
+    return false;
+}   
+
 }
