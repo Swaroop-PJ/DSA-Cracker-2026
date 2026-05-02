@@ -9,17 +9,10 @@ class Solution {
             char ch=s.charAt(i);
             if(ch=='('||ch=='{'||ch=='[') stack.push(ch);
             else{
-                try{
-                    if(isMatchingPair(stack.pop(),ch)) continue;
-                    else return false;
-                }
-                catch(Exception e){
-                    return false;
-                }
+                if(!stack.isEmpty()&&isMatchingPair(stack.pop(),ch)) continue;
+                else return false;
             }
         }
-        if(!stack.isEmpty()) return false;
-        return true;
-        
+        return stack.isEmpty();
     }
 }
