@@ -11,9 +11,7 @@ class Solution {
         if(j==-1) return length;
         for(int i=j+1;i<length;i++){
             if(nums[j]!=nums[i]){
-                int tmp=nums[i];
-                nums[i]=nums[++j];
-                nums[j]=tmp;
+                nums[++j]=nums[i];
             }
         }
         return j+1;
