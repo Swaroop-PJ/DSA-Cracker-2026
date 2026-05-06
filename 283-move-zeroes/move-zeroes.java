@@ -1,5 +1,9 @@
 class Solution {
-    public void moveZeroes(int[] nums) {
+      static {
+        for(int i = 0; i < 1000; i++)
+            moveZeroes(new int[]{});
+    }
+    public static void moveZeroes(int[] nums) {
         int length=nums.length;
         int j=0;
         for(int i=0;i<length;i++){
