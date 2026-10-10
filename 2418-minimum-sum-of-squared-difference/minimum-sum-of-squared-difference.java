@@ -4,10 +4,8 @@ class Solution {
         int n=nums1.length;
         int maxDiff=0;
         long totalK=(long)(k1+k2);
-        int diff[]=new int[n];
         for(int i=0;i<n;i++){
-            diff[i]=Math.abs(nums1[i]-nums2[i]);
-            maxDiff=Math.max(diff[i],maxDiff);
+            maxDiff=Math.max(Math.abs(nums1[i]-nums2[i]),maxDiff);
         }
         if(maxDiff==0) return 0;
         int freq[]=new int[maxDiff+1];
