@@ -9,12 +9,11 @@ class Solution {
             diff[i]=Math.abs(nums1[i]-nums2[i]);
             maxDiff=Math.max(diff[i],maxDiff);
         }
-        Arrays.sort(diff);
         if(maxDiff==0) return 0;
         int freq[]=new int[maxDiff+1];
         Arrays.fill(freq,0);
-        for(int d:diff){
-            freq[d]++;
+        for(int i=0;i<n;i++){
+            freq[Math.abs(nums1[i]-nums2[i])]++;
         }
         for(int i=maxDiff;i>0;i--){
             if(totalK>=(long)freq[i]){
