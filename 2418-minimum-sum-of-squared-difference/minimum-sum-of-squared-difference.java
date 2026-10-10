@@ -1,5 +1,6 @@
 import java.util.*;
 class Solution {
+    private static final int[] freq = new int[100005]; 
     public long minSumSquareDiff(int[] nums1, int[] nums2, int k1, int k2) {
         int n=nums1.length;
         int maxDiff=0;
