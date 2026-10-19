@@ -1,32 +1,35 @@
 class Solution {
-    public record Stats(int start_index,int length){}
-    public static Stats expand(int l,int r,String s){
-        int n=s.length();
-        while(l>=0&&r<=n-1&&s.charAt(l)==s.charAt(r)){
-            l--;
-            r++;
-        }
-        return new Stats(l+1,r-1-l);
-    }
     public String longestPalindrome(String s) {
+        if(s.length()==1) return s;
         int n=s.length();
-        if(n==1) return s;
-        int start_index=0;
         int max_length=1;
+        int start_index=0;
+        int dp[][]=new int[n][n];
         for(int i=0;i<n;i++){
-            var odd=expand(i,i,s);
-            if(odd.length()>max_length){
-                max_length=odd.length();
-                start_index=odd.start_index();
-            }
-            var even=expand(i,i+1,s);
-             if(even.length()>max_length){
-                max_length=even.length();
-                start_index=even.start_index();
-            }
-
+            dp[i][i]=1;
         }
-        return s.substring(start_index,max_length+start_index);
-        
+        for(int i=0;i<n-1;i++){
+            if(s.charAt(i)==s.charAt(i+1)){
+                dp[i][i+1]=1;
+                max_length=2;
+                start_index=i;
+            }
+        }
+
+        for(int k=2;k<n;k++){
+            for(int i=0;i<n-k;i++){
+                if(s.charAt(i)==s.charAt(i+k)){
+                    if(dp[i+1][i+k-1]==1){
+                        dp[i][i+k]=1;
+                        start_index=i;
+                        max_length=k+1;
+                    }
+                    else{
+                        dp[i][i+k]=0;
+                    }
+                }
+            }
+        }
+        return s.substring(start_index,start_index+max_length);
     }
 }
